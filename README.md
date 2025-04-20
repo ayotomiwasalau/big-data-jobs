@@ -7,8 +7,8 @@ The project will allow their analytics team to continue finding insights in what
 The data is queried from s3 buckets hosten at AWS
 
 ```bash
-Song data: s3://udacity-dend/song_data
-Log data: s3://udacity-dend/log_data
+Song data:s3://data-emr-bucket-store/deploy-on-console/input/song_data
+Log data: s3://data-emr-bucket-store/deploy-on-console/input/log_data
 ```
 ### Song Dataset
 The first dataset is a subset of real data from the Million Song Dataset. Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are filepaths to two files in this dataset.
