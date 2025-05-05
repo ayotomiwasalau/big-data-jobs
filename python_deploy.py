@@ -15,9 +15,6 @@ session = boto3.Session(
 )
 client = session.client('emr')
 
-# session = boto3.Session(profile_name='manager')
-# client = session.client('emr')
-
 S3_BUCKET = 'data-emr-bucket-store'
 S3_KEY = 'deploy-on-console/python/spark_job_emr.py'
 S3_URI = 's3://{bucket}/{key}'.format(bucket=S3_BUCKET, key=S3_KEY)

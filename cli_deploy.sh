@@ -1,6 +1,6 @@
 # create an emr instance
 aws emr create-cluster \
-    --name "EMR Cluster" \
+    --name "EMR Cluster - CLI" \
     --release-label "emr-7.8.0" \
     --use-default-roles \
     --applications Name=Hadoop Name=Hive Name=JupyterEnterpriseGateway Name=Livy Name=Spark \
@@ -12,24 +12,7 @@ aws emr create-cluster \
     --region "us-east-1" \
     --profile manager
 
-
-
-# --configurations file://emr-config.json \
-# --region us-west-1 \
-# --security-configuration my-security-config \
-# --enable-debugging \
-# --auto-terminate \
-# --ebs-root-volume-size 100 \
-# --ebs-optimized \
-# --tags Key=Name,Value=MyCluster \
-# --visible-to-all-users \
-# --service-role EMR_DefaultRole \
-# --scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
-# --termination-protected \
-# --log-uri s3://aws-emr-logs/ \
-# --bootstrap-actions Path=s3://aws-emr-bootstrap/bootstrap.sh \
-
-
+#create cluster  with job flow
 aws emr create-cluster \
  --name "notebookCluster" \
  --log-uri "s3://aws-logs-189128986856-us-east-1/elasticmapreduce" \
@@ -44,11 +27,10 @@ aws emr create-cluster \
  --auto-termination-policy '{"IdleTimeout":3600}' \
  --region "us-east-1"
 
-#  --steps '[{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","/home/ayotomiwasalau/Documents/devops/Buidling","a","data","lake","S3","processing","with","spark/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","/home/ayotomiwasalau/Documents/devops/Buidling a data lake S3 processing with spark/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","command-runner.jar"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","command-runner.jar","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","command-runner.jar","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"jobs","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console-deploy","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client"],"Type":"CUSTOM_JAR"},{"Name":"job-via-console","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","placeholder.jar","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job-console","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","command-runner.jar","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"test","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","command-runner.jar","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"job","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"jobclient","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"},{"Name":"jobcluster","ActionOnFailure":"CONTINUE","Jar":"command-runner.jar","Properties":"","Args":["spark-submit","--deploy-mode","cluster","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"],"Type":"CUSTOM_JAR"}]' \
 
 # add steps to the cluster
 aws emr add-steps \
-    --cluster-id j-32ZWBLZK82C9W \
+    --cluster-id j-2MEQ475JXRSGC \
     --steps Type=CUSTOM_JAR,Name="Spark Program",ActionOnFailure=CONTINUE,Jar="command-runner.jar",Args=["spark-submit","--deploy-mode","client","s3://data-emr-bucket-store/deploy-on-console/spark_job_emr.py"] \
     --region "us-east-1" \
     --profile manager

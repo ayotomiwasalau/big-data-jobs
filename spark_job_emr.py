@@ -8,13 +8,6 @@ from pyspark.sql.types import TimestampType
 from pyspark.sql.functions import monotonically_increasing_id
 
 
-# config = configparser.ConfigParser()
-# config.read('dl.cfg')
-
-# os.environ['AWS_ACCESS_KEY_ID']=config['AWS_ACCESS_KEY_ID']
-# os.environ['AWS_SECRET_ACCESS_KEY']=config['AWS_SECRET_ACCESS_KEY']
-
-
 def create_spark_session():
     spark = SparkSession \
         .builder \

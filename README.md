@@ -37,3 +37,5 @@ Star scheme enables the company query song & user data with faster reads and les
 The fact table contains quantitative measure containing measurements, metrics and facts of the data while dimension table contains descriptive attributes to be used as query constraining.
 Fact Table: songplays
 Dimension Tables: users, songs, artists and time.
+
+Read blog @ [link](https://ayotomiwasalau.com/posts/how-to-create-and-deploy?id=f8de8aa7-2e8c-46b5-a763-bad842c8d2f1)
